@@ -81,7 +81,7 @@ basedir=$(pwd)
     applyPatch ../Bukkit Spigot-API HEAD &&
     applyPatch ../CraftBukkit Spigot-Server patched
 ) || (
-    echo "Failed to apply Spigot Patches"
+    echo "Failed to apply Patches"
     exit 1
 ) || exit 1
 # Move out of Spigot
