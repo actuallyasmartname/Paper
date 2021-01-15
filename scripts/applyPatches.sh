@@ -44,7 +44,7 @@ function applyPatch {
 
     # Special case Windows handling because of ARG_MAX constraint
     if [[ $windows == "true" ]]; then
-        echo "Using workaround for Windows ARG_MAX constraint"
+        echo "  Using workaround for Windows ARG_MAX constraint"
         find "$basedir/${what_name}-Patches/"*.patch -print0 | xargs -0 $applycmd
     else
         $applycmd "$basedir/${what_name}-Patches/"*.patch
@@ -52,24 +52,24 @@ function applyPatch {
 
     if [ "$?" != "0" ]; then
         echo 1 > "$statusfile"
-        echo "Something did not apply cleanly to $target."
-        echo "Please review above details and finish the apply then"
-        echo "save the changes with rebuildPatches.sh"
+        echo "  Something did not apply cleanly to $target."
+        echo "  Please review above details and finish the apply then"
+        echo "  save the changes with rebuildPatches.sh"
 
         # On Windows, finishing the patch apply will only fix the latest patch
         # users will need to rebuild from that point and then re-run the patch
         # process to continue
         if [[ $windows == "true" ]]; then
             echo ""
-            echo "Because you're on Windows you'll need to finish the AM,"
-            echo "rebuild all patches, and then re-run the patch apply again."
-            echo "Consider using the scripts with Windows Subsystem for Linux."
+            echo "  Because you're on Windows you'll need to finish the AM,"
+            echo "  rebuild all patches, and then re-run the patch apply again."
+            echo "  Consider using the scripts with Windows Subsystem for Linux."
         fi
 
         exit 1
     else
         rm -f "$statusfile"
-        echo "Patches applied cleanly to $target"
+        echo "  Patches applied cleanly to $target"
     fi
 }
 
