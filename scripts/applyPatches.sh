@@ -81,7 +81,7 @@ basedir=$(pwd)
     applyPatch ../Bukkit Spigot-API HEAD &&
     applyPatch ../CraftBukkit Spigot-Server patched
 ) || (
-    echo "Failed to apply Patches"
+    echo "Failed to apply Spigot Patches"
     exit 1
 ) || exit 1
 # Move out of Spigot
@@ -103,7 +103,7 @@ echo "Importing MC Dev"
         ./scripts/makemcdevsrc.sh "$basedir"
     fi
 ) || (
-    echo "Failed to apply Patches"
+    echo "Failed to apply Bookshelf Patches"
     exit 1
 ) || exit 1
 ) || exit 1
